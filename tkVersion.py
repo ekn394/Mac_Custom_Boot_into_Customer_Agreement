@@ -1,15 +1,17 @@
-# import tkinter for gui
+# KPL - DIY Computer Use Agreement for Branch Macs
+# This step is usually handled by Netloan or MyPC. 
+# However, branch Macs don't use either of those programs.  
+# Evan Nordquist
+# October 2021
+# Requires Python 3 at this stage. 
+
+
+# Import modules 
 
 import sys
-
-try: # Python-2
-    from Tkinter import *
-    import tkFont
-
-except: # Python-3
-    from tkinter import *
-    from tkinter import font as tkFont
-    from tkinter import messagebox
+from tkinter import *
+from tkinter import font as tkFont
+from tkinter import messagebox
 
 # Creating tk object
 window = Tk(className="This is a test")
@@ -33,14 +35,14 @@ canvas1.pack(fill =BOTH, expand = True)
 
 canvas1.create_image( 0, 0, image = bg, anchor ="nw")
 
-
+# Functions triggered by the buttons
 
 def showAgreeMessage():
     #messagebox.showinfo('Message', 'Enjoy')
     sys.exit()
 
 def showDeclineMessage():
-    messagebox.showinfo('Not so fast', 'Whoops, you pressed the "DISAGREE" button.  You are going to need to click the "AGREE" button to use this computer.  Please try again.')
+    messagebox.showinfo('Alert', 'Whoops, you pressed the "DISAGREE" button.  You are going to need to click the "AGREE" button to use this computer.  Please try again.')
 
 # Create fonts 
 
@@ -64,14 +66,13 @@ text_box.pack(expand=True)
 text_box.insert('end', message)
 text_box.config(state='disabled')
 
-
-
 # create buttons
 button = Button(canvas1, text=" I Agree", font=helv24, command = showAgreeMessage, width= 40, height=3, bg='#0052cc', fg="#ffffff", activebackground='#0052cc', activeforeground='#aaffaa')
 button2 = Button(canvas1, text="I Disagree", font=helv24, command = showDeclineMessage, width= 40, height=3, bg='#0052cc', fg="#ffffff", activebackground='#0052cc', activeforeground='#aaffaa')
-# add nittpm tp gui window
 button.pack(side=LEFT, expand=True )
 button2.pack(side=LEFT, expand=True )
+
+# run 
 
 window.mainloop()
 
