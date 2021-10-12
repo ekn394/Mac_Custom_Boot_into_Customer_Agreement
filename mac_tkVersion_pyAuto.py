@@ -19,6 +19,10 @@ from tkinter import *
 from tkinter import font as tkFont
 from tkinter import messagebox
 from tkmacosx import Button
+import pyautogui as mouse
+from time import sleep
+
+
 
 
 # Creating tk object
@@ -51,6 +55,9 @@ canvas1.pack(fill =BOTH, expand = True)
 
 canvas1.create_image( 500,0, image = bg)
 
+# Mouse setup
+
+mouse.FAILSAFE = False #Prevents mouse in top corner from stopping the program
 
 # Functions triggered by the buttons
 
@@ -93,7 +100,18 @@ button2 = Button(canvas1, text="I Disagree", font=helv24, command = showDeclineM
 button.pack(side=LEFT, expand=True )
 button2.pack(side=LEFT, expand=True )
 
-# run 
+# Run 
 
-window.mainloop()
+#window.mainloop()
 
+def pacManUniverseMouse():
+    x,y = mouse.position()
+    if y < 100:
+        mouse.moveTo(x,screen_height - 50)
+
+
+while True:
+    window.mainloop()
+    time.sleep(.1)
+    pacManUniverseMouse()
+    time.sleep(.1)
