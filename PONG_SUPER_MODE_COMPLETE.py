@@ -12,8 +12,8 @@ pygame.init() # starts pygame
 
 FPS = 60 # 60 Frames per second
 fpsClock = pygame.time.Clock()
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1280
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
 ball_HEIGHT = 25
 ball_WIDTH = 25
 ball_SPEED = 5
@@ -44,7 +44,7 @@ ball_y_pos = SCREEN_HEIGHT//2
 background_image = pygame.image.load('backsplash2.png') # Load the background image file
 
 # Set up the Game window
-DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN)
+DISPLAYSURF = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Pong in Progress") #This is the title
 
 
@@ -64,7 +64,7 @@ class ButtonGenerator:
 class ButtonGenerator():
     def __init__(self):
         self.image = pygame.image.load("200_118_DVD_Logo_B.png")
-        self.rect = pygame.draw.rect(DISPLAYSURF, (0,255,0),(400, 200, 450, 100))
+        self.rect = pygame.draw.rect(DISPLAYSURF, (0,0,200),(500, 700, 300, 100), 0, border_radius=15)
 
 #buttonImage = pygame.image.load("200_118_DVD_Logo_B.png")
 #buttonRect = buttonImage.get_rect()
@@ -74,24 +74,27 @@ class ButtonGenerator():
 
 #logoRect = logo1.image.get_rect()
 
-def scoreBoard():
-    RETROFONT = pygame.font.Font('PressStart2P.ttf', 48)
-    scoreSurf = RETROFONT.render("Test", True, WHITE)
-    scoreRect = scoreSurf.get_rect()
-    scoreRect.topleft = (SCREEN_WIDTH//3, SCREEN_HEIGHT //5)
-    DISPLAYSURF.blit(scoreSurf, scoreRect)
+def buttonText():
+    KPL_FONT_BOLD = pygame.font.Font('LSANSD.TTF', 48)
+    #KPL_FONT_REG = pygame.font.Font('LSANSD.TFF', 36)
+    ACCEPT_Surf = KPL_FONT_BOLD.render(" Accept", True, WHITE, )
+    ACCEPT_Rect = ACCEPT_Surf.get_rect()
+    #ACCEPT_Rect.topleft = (SCREEN_WIDTH//3, SCREEN_HEIGHT //5)
+    ACCEPT_Rect.topleft = (550, 715)
+    DISPLAYSURF.blit(ACCEPT_Surf, ACCEPT_Rect)
 
-
+pygame.key.stop_text_input()
 # The Main "game" loop
 
 def main():
     global FPSCLOCK
 
     DISPLAYSURF.fill(BLACK) # Paint the whole screen a certain color
-    DISPLAYSURF.blit(background_image, (0,0)) #Blit the background image to the Display Surface
-    pygame.draw.line(DISPLAYSURF, BLUE, (SCREEN_WIDTH//2,0),(SCREEN_WIDTH//2,SCREEN_HEIGHT),25)
-    logo1 = ButtonGenerator()
-    scoreBoard() # Run the scoreboard function
+    DISPLAYSURF.blit(background_image, (-500,-500)) #Blit the background image to the Display Surface
+    #pygame.draw.line(DISPLAYSURF, BLUE, (SCREEN_WIDTH//2,0),(SCREEN_WIDTH//2,SCREEN_HEIGHT),25)
+    button = ButtonGenerator() # Draw the blue button
+    #DISPLAYSURF.blit(logo1.image, (0,0))
+    buttonText() # Draw the Text on the Button
     #DISPLAYSURF.blit(logo1.image, (400,400))
     pygame.display.update()    # Refreshes the display
     fpsClock.tick(FPS)\
@@ -104,12 +107,19 @@ def main():
             sys.exit()
         
         elif event.type == KEYDOWN:
-            if event.key == K_UP:
-                print("player 2 pressed up")
+            #pressed_keys = pygame.key.get_pressed()
+            #if pressed_keys[K_LSUPER] and [K_TAB]:
+            #    print("Player attempted to alt-tab!")
+                
+
+            if event.key == K_TAB:
+                #return False
+                print("player attempted to press the tab key")
                 Paddle2_up = True
                 Paddle2_down = False
-            if event.key == K_DOWN:
-                print("player 2 pressed down")
+            if event.key == K_LSUPER:
+                #return False
+                print("player attempted to press the left alt key")
                 Paddle2_up = False
                 Paddle2_down = True
             if event.key == K_w:
@@ -124,7 +134,7 @@ def main():
                 Paddle1_down = True
         if event.type == pygame.MOUSEBUTTONDOWN:
             #if player.rect.collidepoint(pygame.mouse.get_pos()):
-            if logo1.rect.collidepoint(pygame.mouse.get_pos()):
+            if button.rect.collidepoint(pygame.mouse.get_pos()):
                 print("Mouse clicke on the player")
                 pygame.quit()
                 sys.exit()
