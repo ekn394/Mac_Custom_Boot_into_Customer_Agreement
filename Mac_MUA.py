@@ -14,14 +14,6 @@ FPS = 60 # 60 Frames per second
 fpsClock = pygame.time.Clock()
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
-ball_HEIGHT = 25
-ball_WIDTH = 25
-ball_SPEED = 5
-
-ball_x_speed = ball_SPEED
-ball_y_speed = ball_SPEED
-score1 = 0 # This is the score for player 1
-score2 = 0 # This is the score for player 2
 
 
 # Set up colors for future use
@@ -31,71 +23,60 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
+# Load the Graphics
+background_image = pygame.image.load('backsplash_1200_899.png') # Load the background image file
 
-# Starting position of the Ball
-ball_x_pos = SCREEN_WIDTH//2
-ball_y_pos = SCREEN_HEIGHT//2
-
-
-# Load the graphics
-#theballGraphic = pygame.image.load('pong_ball_25_cube.png') 
-#right_paddle = pygame.image.load('pong_paddle.png')
-#left_paddle = pygame.image.load('pong_paddle.png')
-background_image = pygame.image.load('backsplash2.png') # Load the background image file
 
 # Set up the Game window
 DISPLAYSURF = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-pygame.display.set_caption("Pong in Progress") #This is the title
-
-
-#Load the Sound effects
-pygame.mixer.init(44100, -16, 2, 2048)
-#beep1 = pygame.mixer.Sound('pongBlip1.ogg')
-#beep2 = pygame.mixer.Sound('pongBlip2.ogg')
-
-
-#mouseX, mouseY = pygame.mouse.
-'''
-class ButtonGenerator:
-    def __init__(self):
-        self.rect = pygame.draw.rect(DISPLAYSURF, (255,0,0,), (100,100,200,300))
-'''
+pygame.display.set_caption("KPL Mac Computer Use Message") #This is the title
 
 class ButtonGenerator():
     def __init__(self):
-        self.image = pygame.image.load("200_118_DVD_Logo_B.png")
         self.rect = pygame.draw.rect(DISPLAYSURF, (0,0,200),(500, 700, 300, 100), 0, border_radius=15)
 
-#buttonImage = pygame.image.load("200_118_DVD_Logo_B.png")
-#buttonRect = buttonImage.get_rect()
+
+def messageText():
+    KPL_FONT_TITLE = pygame.font.Font('LSANSD.TTF', 24)
+    KPL_FONT_REG = pygame.font.Font('LSANS.TTF', 20)
+    TITLE_Surf = KPL_FONT_TITLE.render("Computer Use Policy", True, BLACK, WHITE)
+    TITLE_Rect = TITLE_Surf.get_rect()
+    TITLE_Rect.centerx = DISPLAYSURF.get_rect().centerx
+    TITLE_Rect.centery = 150
+    BORDER_Rect = pygame.draw.rect(DISPLAYSURF, (255,255,255), (TITLE_Rect.left - 200, TITLE_Rect.top - 50, TITLE_Rect.width + 400, TITLE_Rect.height + 400), 0, border_radius = 10)
+    DISPLAYSURF.blit(TITLE_Surf, TITLE_Rect)
+
+    MSG_Surf1 = KPL_FONT_REG.render('''No funny business''', True, BLACK, WHITE)
+    MSG_Rect1 = MSG_Surf1.get_rect()
+    MSG_Rect1.centerx = DISPLAYSURF.get_rect().centerx
+    MSG_Rect1.centery = 250
+    DISPLAYSURF.blit(MSG_Surf1, MSG_Rect1)
+
+    MSG_Surf2 = KPL_FONT_REG.render('''Keep Pirating to a minimum''', True, BLACK, WHITE)
+    MSG_Rect2 = MSG_Surf2.get_rect()
+    MSG_Rect2.centerx = DISPLAYSURF.get_rect().centerx
+    MSG_Rect2.centery = 280
+    DISPLAYSURF.blit(MSG_Surf2, MSG_Rect2)
 
 # Helper functions
 
-
-#logoRect = logo1.image.get_rect()
-
 def buttonText():
     KPL_FONT_BOLD = pygame.font.Font('LSANSD.TTF', 48)
-    #KPL_FONT_REG = pygame.font.Font('LSANSD.TFF', 36)
     ACCEPT_Surf = KPL_FONT_BOLD.render(" Accept", True, WHITE, )
     ACCEPT_Rect = ACCEPT_Surf.get_rect()
-    #ACCEPT_Rect.topleft = (SCREEN_WIDTH//3, SCREEN_HEIGHT //5)
     ACCEPT_Rect.topleft = (550, 715)
     DISPLAYSURF.blit(ACCEPT_Surf, ACCEPT_Rect)
 
-pygame.key.stop_text_input()
 # The Main "game" loop
 
 def main():
     global FPSCLOCK
 
     DISPLAYSURF.fill(BLACK) # Paint the whole screen a certain color
-    DISPLAYSURF.blit(background_image, (-500,-500)) #Blit the background image to the Display Surface
-    #pygame.draw.line(DISPLAYSURF, BLUE, (SCREEN_WIDTH//2,0),(SCREEN_WIDTH//2,SCREEN_HEIGHT),25)
+    DISPLAYSURF.blit(background_image, (40,0)) #Blit the background image to the Display Surface
     button = ButtonGenerator() # Draw the blue button
-    #DISPLAYSURF.blit(logo1.image, (0,0))
+    message = messageText()
     buttonText() # Draw the Text on the Button
-    #DISPLAYSURF.blit(logo1.image, (400,400))
     pygame.display.update()    # Refreshes the display
     fpsClock.tick(FPS)\
 
@@ -109,8 +90,7 @@ def main():
         elif event.type == KEYDOWN:
             #pressed_keys = pygame.key.get_pressed()
             #if pressed_keys[K_LSUPER] and [K_TAB]:
-            #    print("Player attempted to alt-tab!")
-                
+            #    print("Player attempted to alt-tab!")         
 
             if event.key == K_TAB:
                 #return False
