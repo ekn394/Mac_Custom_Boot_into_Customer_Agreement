@@ -52,11 +52,17 @@ def messageText():
     MSG_Rect1.centery = 250
     DISPLAYSURF.blit(MSG_Surf1, MSG_Rect1)
 
-    MSG_Surf2 = KPL_FONT_REG.render('''Keep Pirating to a minimum''', True, BLACK, WHITE)
+    MSG_Surf2 = KPL_FONT_REG.render('''Keep your pirating down to a minimum''', True, BLACK, WHITE)
     MSG_Rect2 = MSG_Surf2.get_rect()
     MSG_Rect2.centerx = DISPLAYSURF.get_rect().centerx
-    MSG_Rect2.centery = 280
+    MSG_Rect2.centery = 290
     DISPLAYSURF.blit(MSG_Surf2, MSG_Rect2)
+
+    MSG_Surf3 = KPL_FONT_REG.render('''We've been watching you Neo.''', True, BLACK, WHITE)
+    MSG_Rect3 = MSG_Surf3.get_rect()
+    MSG_Rect3.centerx = DISPLAYSURF.get_rect().centerx
+    MSG_Rect3.centery = 330
+    DISPLAYSURF.blit(MSG_Surf3, MSG_Rect3)
 
 # Helper functions
 
