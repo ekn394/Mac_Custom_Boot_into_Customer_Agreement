@@ -7,14 +7,12 @@
 import random, sys, time, pygame
 from pygame.locals import *
 
-
 pygame.init() # starts pygame
 
 FPS = 60 # 60 Frames per second
 fpsClock = pygame.time.Clock()
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
-
 
 # Set up colors for future use
 BLACK = (0, 0, 0)
@@ -26,7 +24,6 @@ BLUE = (0, 0, 255)
 # Load the Graphics
 background_image = pygame.image.load('backsplash_1200_899.png') # Load the background image file
 
-
 # Set up the Game window
 DISPLAYSURF = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("KPL Mac Computer Use Message") #This is the title
@@ -34,7 +31,6 @@ pygame.display.set_caption("KPL Mac Computer Use Message") #This is the title
 class ButtonGenerator():
     def __init__(self):
         self.rect = pygame.draw.rect(DISPLAYSURF, (0,0,200),(500, 700, 300, 100), 0, border_radius=15)
-
 
 def messageText():
     KPL_FONT_TITLE = pygame.font.Font('LSANSD.TTF', 24)
@@ -46,24 +42,25 @@ def messageText():
     BORDER_Rect = pygame.draw.rect(DISPLAYSURF, (255,255,255), (TITLE_Rect.left - 200, TITLE_Rect.top - 50, TITLE_Rect.width + 400, TITLE_Rect.height + 400), 0, border_radius = 10)
     DISPLAYSURF.blit(TITLE_Surf, TITLE_Rect)
 
-    MSG_Surf1 = KPL_FONT_REG.render('''No funny business''', True, BLACK, WHITE)
+    MSG_Surf1 = KPL_FONT_REG.render("No funny business", True, BLACK, WHITE)
     MSG_Rect1 = MSG_Surf1.get_rect()
     MSG_Rect1.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect1.centery = 250
     DISPLAYSURF.blit(MSG_Surf1, MSG_Rect1)
 
-    MSG_Surf2 = KPL_FONT_REG.render('''Keep your pirating down to a minimum''', True, BLACK, WHITE)
+    MSG_Surf2 = KPL_FONT_REG.render("Keep your pirating down to a minimum", True, BLACK, WHITE)
     MSG_Rect2 = MSG_Surf2.get_rect()
     MSG_Rect2.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect2.centery = 290
     DISPLAYSURF.blit(MSG_Surf2, MSG_Rect2)
 
-    MSG_Surf3 = KPL_FONT_REG.render('''We've been watching you Neo.''', True, BLACK, WHITE)
+'''
+    MSG_Surf3 = KPL_FONT_REG.render("Wake up, Neo.", True, BLACK, WHITE)
     MSG_Rect3 = MSG_Surf3.get_rect()
     MSG_Rect3.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect3.centery = 330
     DISPLAYSURF.blit(MSG_Surf3, MSG_Rect3)
-
+'''
 # Helper functions
 
 def buttonText():
@@ -86,42 +83,25 @@ def main():
     pygame.display.update()    # Refreshes the display
     fpsClock.tick(FPS)\
 
-
     # Check for a QUIT event (such as closing the window)
     for event in pygame.event.get():
+        '''
         if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
+            #pygame.quit()
+            #sys.exit()
+            #print("This was disabled to make Command Q stop being an escape hatch")
         
-        elif event.type == KEYDOWN:
-            #pressed_keys = pygame.key.get_pressed()
-            #if pressed_keys[K_LSUPER] and [K_TAB]:
-            #    print("Player attempted to alt-tab!")         
-
-            if event.key == K_TAB:
-                #return False
-                print("player attempted to press the tab key")
-                Paddle2_up = True
-                Paddle2_down = False
-            if event.key == K_LSUPER:
-                #return False
-                print("player attempted to press the left alt key")
-                Paddle2_up = False
-                Paddle2_down = True
-            if event.key == K_w:
-                print("player 1 pressed up")
-                Paddle1_up = True
-                Paddle1_down = False
+        if event.type == KEYDOWN:
+            pressed_keys = pygame.key.get_pressed()
+            if pressed_keys[K_k] and pressed_keys[K_p] and pressed_keys[K_l]:
+                print("New escape hatch!")
                 pygame.quit()
                 sys.exit()
-            if event.key == K_s:
-                print("player 1 pressed down")
-                Paddle1_up = False
-                Paddle1_down = True
+        '''
         if event.type == pygame.MOUSEBUTTONDOWN:
             #if player.rect.collidepoint(pygame.mouse.get_pos()):
             if button.rect.collidepoint(pygame.mouse.get_pos()):
-                print("Mouse clicke on the player")
+                print("Mouse clicked on the Accept button")
                 pygame.quit()
                 sys.exit()
     
