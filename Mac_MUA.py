@@ -1,7 +1,4 @@
-#KPL Intro to Coding Final Project
-#The Pong code is started but not complete
-#Pong in progress - Starting point for class # 7
-
+# DIY Mac User Agreement
 # Import Modules and Declare Global Variables
 
 import random, sys, time, pygame
@@ -14,18 +11,15 @@ fpsClock = pygame.time.Clock()
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
 
-# Set up colors for future use
+# Set up colors for future reference
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
 
 # Load the Graphics
 background_image = pygame.image.load('backsplash_1200_899.png') # Load the background image file
 
 # Set up the Game window
-DISPLAYSURF = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+DISPLAYSURF = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) 
 pygame.display.set_caption("KPL Mac Computer Use Message") #This is the title
 
 class ButtonGenerator():
@@ -48,7 +42,7 @@ def messageText():
     MSG_Rect1.centery = 250
     DISPLAYSURF.blit(MSG_Surf1, MSG_Rect1)
 
-    MSG_Surf2 = KPL_FONT_REG.render("Keep your pirating down to a minimum", True, BLACK, WHITE)
+    MSG_Surf2 = KPL_FONT_REG.render("Keep your pirating \n \t down to a minimum", True, BLACK, WHITE)
     MSG_Rect2 = MSG_Surf2.get_rect()
     MSG_Rect2.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect2.centery = 290
@@ -61,6 +55,7 @@ def messageText():
     MSG_Rect3.centery = 330
     DISPLAYSURF.blit(MSG_Surf3, MSG_Rect3)
 '''
+
 # Helper functions
 
 def buttonText():
@@ -74,14 +69,13 @@ def buttonText():
 
 def main():
     global FPSCLOCK
-
     DISPLAYSURF.fill(BLACK) # Paint the whole screen a certain color
     DISPLAYSURF.blit(background_image, (40,0)) #Blit the background image to the Display Surface
     button = ButtonGenerator() # Draw the blue button
-    message = messageText()
+    message = messageText() # Draw the main text message.
     buttonText() # Draw the Text on the Button
     pygame.display.update()    # Refreshes the display
-    fpsClock.tick(FPS)\
+    fpsClock.tick(FPS)
 
     # Check for a QUIT event (such as closing the window)
     for event in pygame.event.get():
@@ -89,7 +83,7 @@ def main():
         if event.type == QUIT:
             #pygame.quit()
             #sys.exit()
-            #print("This was disabled to make Command Q stop being an escape hatch")
+            #This was disabled to make Command Q stop being an escape hatch
         
         if event.type == KEYDOWN:
             pressed_keys = pygame.key.get_pressed()
@@ -99,9 +93,8 @@ def main():
                 sys.exit()
         '''
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #if player.rect.collidepoint(pygame.mouse.get_pos()):
             if button.rect.collidepoint(pygame.mouse.get_pos()):
-                print("Mouse clicked on the Accept button")
+                #print("Mouse clicked on the Accept button")
                 pygame.quit()
                 sys.exit()
     
