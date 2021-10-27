@@ -34,7 +34,7 @@ class ButtonGenerator():
 
 def messageText():
     KPL_FONT_TITLE = pygame.font.Font('LSANSD.TTF', 24)
-    KPL_FONT_REG = pygame.font.Font('LSANS.TTF', 20)
+    KPL_FONT_REG = pygame.font.Font('LSANS.TTF', 18)
     TITLE_Surf = KPL_FONT_TITLE.render("Computer Use Policy", True, BLACK, WHITE)
     TITLE_Rect = TITLE_Surf.get_rect()
     TITLE_Rect.centerx = DISPLAYSURF.get_rect().centerx
@@ -42,13 +42,13 @@ def messageText():
     BORDER_Rect = pygame.draw.rect(DISPLAYSURF, (255,255,255), (TITLE_Rect.left - 200, TITLE_Rect.top - 50, TITLE_Rect.width + 400, TITLE_Rect.height + 400), 0, border_radius = 10)
     DISPLAYSURF.blit(TITLE_Surf, TITLE_Rect)
 
-    MSG_Surf1 = KPL_FONT_REG.render("No funny business", True, BLACK, WHITE)
+    MSG_Surf1 = KPL_FONT_REG.render("I agree to comply with the KPL's Safe Use Code & Internet Access Policy. ", True, BLACK, WHITE)
     MSG_Rect1 = MSG_Surf1.get_rect()
     MSG_Rect1.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect1.centery = 250
     DISPLAYSURF.blit(MSG_Surf1, MSG_Rect1)
 
-    MSG_Surf2 = KPL_FONT_REG.render("Keep your pirating down to a minimum", True, BLACK, WHITE)
+    MSG_Surf2 = KPL_FONT_REG.render("I understand that the computers may be used for lawful puposes only.", True, BLACK, WHITE)
     MSG_Rect2 = MSG_Surf2.get_rect()
     MSG_Rect2.centerx = DISPLAYSURF.get_rect().centerx
     MSG_Rect2.centery = 290
