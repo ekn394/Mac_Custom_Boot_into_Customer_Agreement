@@ -1,4 +1,4 @@
-# Mac_User_Agreement
+# Library Mac computers - Boot to Custom User Agreement Page 
 
 ## Installing
 
